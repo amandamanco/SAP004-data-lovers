@@ -6,9 +6,8 @@ body {
 }
 
 .logo {
-  width: 60%;
-  margin-left: 20%;
-  margin-bottom: 2%;
+  width: 40%;
+  margin: 2% 30%;
 }
 
 .menu {
@@ -37,7 +36,7 @@ main {
   justify-content: center;
 }
 
-.skeleton {
+.container {
   border: 2px solid #9469f093;
   background-color: rgba(255, 255, 255, 0.856);
   width: 80%;
@@ -45,6 +44,46 @@ main {
   font-family: "Play", sans-serif;
   text-align: center;
   margin-top: 2%;
+}
+
+#root {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  height: 220px;
+  width: 20%;
+  background-color: rgba(255, 255, 255, 0.973);
+  margin: 12px;
+  border: 2px solid #9469f093;
+  border-radius: 6%;
+}
+
+.img {
+  margin-top: 2%;
+}
+
+.box {
+  display: flex;
+  justify-content: space-around;
+}
+
+.number {
+  background-color: rgb(228, 228, 228);
+  border-radius: 15px;
+  width: 20%;
+}
+
+.type {
+  border-radius: 15px;
+}
+
+.name {
+  margin: 0;
+  font-size: 30px;
 }
 
 footer {
