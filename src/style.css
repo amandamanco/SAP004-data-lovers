@@ -90,92 +90,107 @@ main {
 
 .Grass {
   background-color: #10db0c;
-  border-radius: 8px;
+  border-radius: 15px;
   margin: 2px;
+  padding: 2px 4px;
 }
 
 .Poison {
   background-color: #9d00fd;
-  border-radius: 8px;
+  border-radius: 15px;
   margin: 2px;
+  padding: 2px 4px;
 }
 
 .Fire {
   background-color: #ff0f0f;
-  border-radius: 8px;
+  border-radius: 15px;
   margin: 2px;
+  padding: 2px 4px;
 }
 
 .Flying {
   background-color: #0cdbb6;
-  border-radius: 8px;
+  border-radius: 15px;
   margin: 2px;
+  padding: 2px 4px;
 }
 
 .Water {
   background-color: #4d49ff;
-  border-radius: 8px;
+  border-radius: 15px;
   margin: 2px;
+  padding: 2px 4px;
 }
 
 .Bug {
   background-color: #00890e;
-  border-radius: 8px;
+  border-radius: 15px;
   margin: 2px;
+  padding: 2px 4px;
 }
 
 .Normal {
   background-color: #a3a3a3;
-  border-radius: 8px;
+  border-radius: 15px;
   margin: 2px;
+  padding: 2px 4px;
 }
 
 .Electric {
   background-color: #f1f510;
-  border-radius: 8px;
+  border-radius: 15px;
   margin: 2px;
+  padding: 2px 4px;
 }
 
 .Ground {
   background-color: #ffb526;
-  border-radius: 8px;
+  border-radius: 15px;
   margin: 2px;
+  padding: 2px 4px;
 }
 
 .Fighting {
   background-color: #ff5621;
-  border-radius: 8px;
+  border-radius: 15px;
   margin: 2px;
+  padding: 2px 4px;
 }
 
 .Psychic {
   background-color: #ff49cc;
-  border-radius: 8px;
+  border-radius: 15px;
   margin: 2px;
+  padding: 2px 4px;
 }
 
 .Rock {
   background-color: #c57b26;
-  border-radius: 8px;
+  border-radius: 15px;
   margin: 2px;
+  padding: 2px 4px;
 }
 
 .Ice {
   background-color: #80d1ff;
-  border-radius: 8px;
+  border-radius: 15px;
   margin: 2px;
+  padding: 2px 4px;
 }
 
 .Ghost {
   background-color: #6c5f76;
-  border-radius: 8px;
+  border-radius: 15px;
   margin: 2px;
+  padding: 2px 4px;
 }
 
 .Dragon {
   background-color: #d11a1a;
-  border-radius: 8px;
+  border-radius: 15px;
   margin: 2px;
+  padding: 2px 4px;
 }
 
 footer {
