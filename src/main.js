@@ -1,9 +1,12 @@
 import data from './data/pokemon/pokemon.js';
-import pokemon from './data/pokemon/pokemon.js';
+import { filterData} from './data.js';
+//import pokemon from './data/pokemon/pokemon.js';
 
 let pokemonData = data.pokemon;
 
-pokemonData.map((pokemon) => {
+
+let buildCard = function (pokemon) {
+
     let card = document.createElement('div');
     let img = document.createElement('img');
     let box = document.createElement('div');
@@ -28,7 +31,7 @@ pokemonData.map((pokemon) => {
     } else if (pokemon.id === 32) {
         name.innerHTML = "Nidoran ♂ "
     }
-
+    
     card.classList.add("card");
     img.classList.add("img");
     box.classList.add("box")
@@ -45,12 +48,27 @@ pokemonData.map((pokemon) => {
     card.appendChild(name);
 
     document.getElementById("root").appendChild(card);
-})
+}
+
+pokemonData.map(buildCard);
+
+document.getElementById("list").addEventListener("change", printFilter)
+function printFilter() {
+    let pokemonType = document.getElementById("list").value;
+    let filterList = filterData(pokemonType);
+    let cards = document.querySelectorAll("div.card");
+    for (let i = 0; i < cards.length; i++) {
+        document.getElementById("root").removeChild(cards[i]);
+    }
+    if (pokemonType === "Todos") {
+        pokemonData.map(buildCard)
+    }
+    filterList.map(buildCard)
+}
 
 
-
-
-
-
-
-
+// document.getElementById("order").addEventListener("change", printOrder)
+// function printOrder() {
+//     console.log("aqui")
+//     pokemonData.sort(orderData);
+// }

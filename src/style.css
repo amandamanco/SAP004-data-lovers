@@ -22,13 +22,9 @@ body {
   padding: 5px;
   display: inline;
   font-family: "Play", sans-serif;
-  font-size: 30px;
+  font-size: 25px;
   width: 15%;
   text-align: center;
-}
-
-.button:hover {
-  background-color: #d5a7e0ad;
 }
 
 main {
@@ -40,7 +36,7 @@ main {
   border: 2px solid #9469f093;
   background-color: rgba(255, 255, 255, 0.856);
   width: 80%;
-  border-radius: 10px;
+  border-radius: 20px;
   font-family: "Play", sans-serif;
   text-align: center;
   margin-top: 2%;
@@ -117,7 +113,7 @@ main {
 }
 
 .Water {
-  background-color: #4d49ff;
+  background-color: #3430f8;
   border-radius: 15px;
   margin: 2px;
   padding: 2px 4px;

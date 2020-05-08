@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pokemon</title>
     <link rel="stylesheet" href="style.css" />
     <link
@@ -14,13 +15,37 @@
       <img class="logo" src="./assets/Logo.png" alt="Logo do Pokemon" />
     </header>
 
-    <nav>
-      <ul class="menu">
-        <li class="button">Filtrar</li>
-        <li class="button">
-          Ordenar
-        </li>
-      </ul>
+    <nav class="menu">
+      <!-- <div class="order-filter">
+      <label for="list">Filtrar por</label> -->
+      <select id="list" class="button">
+        <option value="Todos">Todos</option>
+        <option value="Grass">Planta</option>
+        <option value="Poison">Veneno</option>
+        <option value="Ice">Gelo</option>
+        <option value="Fire">Fogo</option>
+        <option value="Ghost">Fantasma</option>
+        <option value="Dragon">Dragão</option>
+        <option value="Flying">Voador</option>
+        <option value="Water">Água</option>
+        <option value="Bug">Inseto</option>
+        <option value="Normal">Normal</option>
+        <option value="Electric">Gelo</option>
+        <option value="Ground">Terra</option>
+        <option value="Rock">Pedra</option>
+        <option value="Fighting">Luta</option>
+        <option value="Psychic">Psíquico</option>
+      </select>
+    <!-- </div> -->
+
+    <!-- <div class="order-filter">
+      <label for="order">Ordenar</label> -->
+      <select id="order" class="button">
+        <option value="pokedex-number">N° da Pokedex</option>
+        <option value="a-z">A-Z</option>
+        <!-- <option value="z-a">Z-A</option> -->
+        </select>
+        <!-- </div> -->
     </nav>
 
     <main>
