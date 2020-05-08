@@ -1,5 +1,5 @@
 import data from './data/pokemon/pokemon.js';
-import { filterData} from './data.js';
+import { filterData, orderData } from './data.js';
 //import pokemon from './data/pokemon/pokemon.js';
 
 let pokemonData = data.pokemon;
@@ -18,7 +18,7 @@ let buildCard = function (pokemon) {
 
     img.src = pokemon.img;
     number.innerHTML = `${pokemon.num}`;
-
+    console.log(pokemon, pokemon.type)
     type.innerHTML = `<span class="${pokemon.type[0]}">${pokemon.type[0]}</span>`;
     if (pokemon.type[1] !== undefined) {
         typeTwo.innerHTML = `<span class="${pokemon.type[1]}">${pokemon.type[1]}</span>`;
@@ -31,7 +31,7 @@ let buildCard = function (pokemon) {
     } else if (pokemon.id === 32) {
         name.innerHTML = "Nidoran ♂ "
     }
-    
+
     card.classList.add("card");
     img.classList.add("img");
     box.classList.add("box")
@@ -67,8 +67,35 @@ function printFilter() {
 }
 
 
-// document.getElementById("order").addEventListener("change", printOrder)
-// function printOrder() {
-//     console.log("aqui")
-//     pokemonData.sort(orderData);
+document.getElementById("order").addEventListener("change", printOrder)
+function printOrder() {
+    let pokemonOrder = document.getElementById("order").value;
+    let cards = document.querySelectorAll("div.card");
+    for (let i = 0; i < cards.length; i++) {
+        document.getElementById("root").removeChild(cards[i]);
+    }
+
+    if (pokemonOrder === "a-z") {
+        const az = orderData(pokemonData, "name", "az")
+        az.map(buildCard)
+    } else if (pokemonOrder === "z-a") {
+        const za = orderData(pokemonData, "name", "za")
+        za.map(buildCard)
+    }
+}
+
+// document.getElementById("order").addEventListener("change", printOrderNum)
+// function printOrderNum() {
+//     let pokemonOrder = document.getElementById("order").value;
+
+//     if (pokemonOrder === "pokedex-number") {
+//         pokemonData.map(buildCard)
+//     }
+
 // }
+
+
+
+
+
+
