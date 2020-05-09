@@ -1,9 +1,7 @@
 import data from './data/pokemon/pokemon.js';
-import { filterData, orderData } from './data.js';
-//import pokemon from './data/pokemon/pokemon.js';
+import { filterData, orderData, orderPokedex } from './data.js';
 
 let pokemonData = data.pokemon;
-
 
 let buildCard = function (pokemon) {
 
@@ -66,7 +64,6 @@ function printFilter() {
     filterList.map(buildCard)
 }
 
-
 document.getElementById("order").addEventListener("change", printOrder)
 function printOrder() {
     let pokemonOrder = document.getElementById("order").value;
@@ -74,25 +71,19 @@ function printOrder() {
     for (let i = 0; i < cards.length; i++) {
         document.getElementById("root").removeChild(cards[i]);
     }
-
     if (pokemonOrder === "a-z") {
         const az = orderData(pokemonData, "name", "az")
         az.map(buildCard)
     } else if (pokemonOrder === "z-a") {
         const za = orderData(pokemonData, "name", "za")
         za.map(buildCard)
+    } else if (pokemonOrder === "pokedex-number") {
+        const pokedex = orderPokedex(pokemonData, "id", "pokedex")
+        pokedex.map(buildCard)
     }
 }
 
-// document.getElementById("order").addEventListener("change", printOrderNum)
-// function printOrderNum() {
-//     let pokemonOrder = document.getElementById("order").value;
 
-//     if (pokemonOrder === "pokedex-number") {
-//         pokemonData.map(buildCard)
-//     }
-
-// }
 
 
 

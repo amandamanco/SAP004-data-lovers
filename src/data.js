@@ -1,5 +1,4 @@
 import data from './data/pokemon/pokemon.js';
-// import pokemon from './data/pokemon/pokemon.js';
 
 let myPokemon = data.pokemon;
 
@@ -11,7 +10,6 @@ export const filterData = typeFilter => {
     })
     return filteredPokemons;
 }
-
 
 export const orderData = (myPokemon, name, alfaOrder) => {
     if (alfaOrder == "az") {
@@ -30,15 +28,13 @@ export const orderData = (myPokemon, name, alfaOrder) => {
     }
 }
 
-// export const orderNumber = (myPokemon, id, alfaOrder) => {
-//     if (alfaOrder == "pokedex") {
-//         return myPokemon.sort((a, b) => {
-//             if (b[id] < a[id]) return 1;
-//             else if (a[id] < b[id]) return -1;
-//             else return 0
-//         })
-//     }
-// }
-
-
+export const orderPokedex = (myPokemon, id, alfaOrder) => {
+    if (alfaOrder == "pokedex") {
+        return myPokemon.sort((a, b) => {
+            if (b[id] < a[id]) return 1;
+            else if (a[id] < b[id]) return -1;
+            else return 0
+        })
+    }
+}
 
