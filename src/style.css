@@ -84,6 +84,42 @@ main {
   font-size: 30px;
 }
 
+@media (min-width: 800px) and (max-width: 1000px) {
+  .button {
+    width: 30%;
+  }
+  .container {
+    width: 90%;
+  }
+
+  .card {
+    width: 25%;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 500px) {
+  .logo {
+    width: 80%;
+    margin: 1% 10%;
+  }
+
+  .menu {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+  }
+
+  .button {
+    font-size: 20px;
+    width: 80%;
+    margin: auto;
+  }
+
+  .card {
+    width: 90%;
+  }
+}
+
 .Grass {
   background-color: #10db0c;
   border-radius: 15px;

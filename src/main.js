@@ -3,6 +3,10 @@ import { filterData, orderData, orderPokedex } from './data.js';
 
 let pokemonData = data.pokemon;
 
+function fixName(name) {
+    return name.replace("(Male)", "").replace("(Female)", "")
+}
+
 let buildCard = function (pokemon) {
 
     let card = document.createElement('div');
@@ -23,12 +27,9 @@ let buildCard = function (pokemon) {
         typeTwo.classList.add("type");
     }
 
-    name.innerHTML = `${pokemon.name}`;
-    if (pokemon.id === 29) {
-        name.innerHTML = "Nidoran ♀";
-    } else if (pokemon.id === 32) {
-        name.innerHTML = "Nidoran ♂ "
-    }
+    let nameRigth = fixName(pokemon.name);
+
+    name.innerHTML = nameRigth;
 
     card.classList.add("card");
     img.classList.add("img");
