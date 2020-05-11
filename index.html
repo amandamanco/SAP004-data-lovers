@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pokemon</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Play&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="modal1"></p>
+      </div>
+    </div>
+
+    <header>
+      <img class="logo" src="./assets/Logo.png" alt="Logo do Pokemon" />
+    </header>
+
+    <nav class="menu">
+      <select id="list" class="button">
+        <option value="" disabled>Filtrar por Tipo</option>
+        <option value="Todos">Todos</option>
+        <option value="Grass">Planta</option>
+        <option value="Poison">Veneno</option>
+        <option value="Ice">Gelo</option>
+        <option value="Fire">Fogo</option>
+        <option value="Ghost">Fantasma</option>
+        <option value="Dragon">Dragão</option>
+        <option value="Flying">Voador</option>
+        <option value="Water">Água</option>
+        <option value="Bug">Inseto</option>
+        <option value="Normal">Normal</option>
+        <option value="Electric">Elétrico</option>
+        <option value="Ground">Terra</option>
+        <option value="Rock">Pedra</option>
+        <option value="Fighting">Luta</option>
+        <option value="Psychic">Psíquico</option>
+      </select>
+
+      <select id="order" class="button">
+        <option value="" disabled>Ordenar</option>
+        <option value="pokedex-number">N° da Pokedex</option>
+        <option value="a-z">A-Z</option>
+        <option value="z-a">Z-A</option>
+      </select>
+    </nav>
+
+    <main>
+      <div class="container">
+        <div id="root"></div>
+      </div>
+    </main>
+
+    <footer>
+      <p>Desenvolvido por: Marcella Teliceski e Amanda Manço / Abril 2020</p>
+    </footer>
+
+    <script src="main.js" type="module"></script>
+  </body>
+</html>
