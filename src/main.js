@@ -1,10 +1,66 @@
 import data from './data/pokemon/pokemon.js';
 import { filterData, orderData, orderPokedex } from './data.js';
 
-let pokemonData = data.pokemon;
+const pokemonData = data.pokemon;
 
 function fixName(name) {
     return name.replace("(Male)", "").replace("(Female)", "")
+}
+
+let buildModal = function (index) {
+
+    const way = data.pokemon.find(pokemon => pokemon.id == index)
+
+    let modalPop = document.createElement('div');
+    let img = document.createElement('img');
+    let numbName = document.createElement('div')
+    let number = document.createElement('p');
+    let name = document.createElement('p');
+    let boxInfo = document.createElement('div')
+    let height = document.createElement('p')
+    let weight = document.createElement('p')
+    let candy = document.createElement('p')
+    let evolution = document.createElement('p')
+    let weakness = document.createElement('p')
+    let amount = document.createElement('p')
+
+    img.src = way.img;
+    number.innerHTML = `${way.num}`;
+    name.innerHTML = `${way.name}`;
+    height.innerHTML = `${way.height}`;
+    weight.innerHTML = `${way.weight}`;
+    candy.innerHTML = `${way.candy}`
+    evolution.innerHTML = `${way.next_evolution}`
+    weakness.innerHTML = `${way.weakness}`
+    amount.innerHTML = `${way.candy_count}`
+
+    modalPop.appendChild(img);
+    modalPop.appendChild(numbName);
+    numbName.appendChild(number);
+    numbName.appendChild(name);
+    modalPop.appendChild(boxInfo);
+    boxInfo.appendChild(height);
+    boxInfo.appendChild(weight);
+    boxInfo.appendChild(candy);
+    boxInfo.appendChild(evolution);
+    boxInfo.appendChild(weakness);
+    boxInfo.appendChild(amount);
+
+    let modal = document.getElementById("myModal");
+    let btn = document.getElementById("myBtn");
+    let span = document.getElementsByClassName("close")[0];
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
 }
 
 let buildCard = function (pokemon) {
@@ -28,7 +84,6 @@ let buildCard = function (pokemon) {
     }
 
     let nameRigth = fixName(pokemon.name);
-
     name.innerHTML = nameRigth;
 
     card.classList.add("card");
@@ -83,6 +138,25 @@ function printOrder() {
         pokedex.map(buildCard)
     }
 }
+
+function showModal() {
+    for (const pokemon of pokemonData) {
+        console.log(pokemon)
+        // pokemonData.addEventListener("click", vai)
+        // function vai () {
+        //     const id = pokemonData.getAttribute("data-id");
+        //     buildModal(id)
+        // }
+    }
+}
+console.log(showModal)
+
+
+// document.getElementById("root").addEventListener("click", showModal)
+// function showModal() {
+
+//     buildModal()
+// }
 
 
 
