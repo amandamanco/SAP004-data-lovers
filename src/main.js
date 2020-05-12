@@ -11,6 +11,7 @@ let buildModal = function (index) {
 
     const way = data.pokemon.find(pokemon => pokemon.id == index)
 
+    let allModal = document.createElement('div')
     let modalPop = document.createElement('div');
     let img = document.createElement('img');
     let numbName = document.createElement('div')
@@ -34,6 +35,13 @@ let buildModal = function (index) {
     weakness.innerHTML = `${way.weakness}`
     amount.innerHTML = `${way.candy_count}`
 
+    allModal.classList.add("modal")
+    modalPop.classList.add("modal-content");
+    numbName.classList.add("number-name")
+    boxInfo.classList.add("box-info")
+    img.classList.add("img-modal")
+
+    allModal.appendChild(modalPop)
     modalPop.appendChild(img);
     modalPop.appendChild(numbName);
     numbName.appendChild(number);
@@ -46,21 +54,8 @@ let buildModal = function (index) {
     boxInfo.appendChild(weakness);
     boxInfo.appendChild(amount);
 
-    let modal = document.getElementById("myModal");
-    let btn = document.getElementById("myBtn");
-    let span = document.getElementsByClassName("close")[0];
-    btn.onclick = function () {
-        modal.style.display = "block";
-    }
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
+    document.getElementsByTagName('body')[0].appendChild(allModal)
+    allModal.style.display = "block";
 }
 
 let buildCard = function (pokemon) {
@@ -76,7 +71,6 @@ let buildCard = function (pokemon) {
 
     img.src = pokemon.img;
     number.innerHTML = `${pokemon.num}`;
-    console.log(pokemon, pokemon.type)
     type.innerHTML = `<span class="${pokemon.type[0]}">${pokemon.type[0]}</span>`;
     if (pokemon.type[1] !== undefined) {
         typeTwo.innerHTML = `<span class="${pokemon.type[1]}">${pokemon.type[1]}</span>`;
@@ -86,6 +80,7 @@ let buildCard = function (pokemon) {
     let nameRigth = fixName(pokemon.name);
     name.innerHTML = nameRigth;
 
+    card.id = `id-card-${pokemon.id}`
     card.classList.add("card");
     img.classList.add("img");
     box.classList.add("box")
@@ -104,7 +99,14 @@ let buildCard = function (pokemon) {
     document.getElementById("root").appendChild(card);
 }
 
+
 pokemonData.map(buildCard);
+
+for (const pokemon of pokemonData) {
+    document.getElementById(`id-card-${pokemon.id}`).addEventListener("click", function () {
+        buildModal(pokemon.id);
+    })
+}
 
 document.getElementById("list").addEventListener("change", printFilter)
 function printFilter() {
@@ -138,26 +140,6 @@ function printOrder() {
         pokedex.map(buildCard)
     }
 }
-
-function showModal() {
-    for (const pokemon of pokemonData) {
-        console.log(pokemon)
-        // pokemonData.addEventListener("click", vai)
-        // function vai () {
-        //     const id = pokemonData.getAttribute("data-id");
-        //     buildModal(id)
-        // }
-    }
-}
-console.log(showModal)
-
-
-// document.getElementById("root").addEventListener("click", showModal)
-// function showModal() {
-
-//     buildModal()
-// }
-
 
 
 
