@@ -13,7 +13,9 @@ let buildModal = function (index) {
 
     let allModal = document.createElement('div')
     let modalPop = document.createElement('div');
+    let contentImg = document.createElement('div')
     let img = document.createElement('img');
+    let contentInfo = document.createElement('div');
     let numbName = document.createElement('div')
     let number = document.createElement('p');
     let name = document.createElement('p');
@@ -21,41 +23,70 @@ let buildModal = function (index) {
     let height = document.createElement('p')
     let weight = document.createElement('p')
     let candy = document.createElement('p')
-    let evolution = document.createElement('p')
+    let evolutionNext = document.createElement('p')
+    let evolutionPrev = document.createElement('p')
     let weakness = document.createElement('p')
     let amount = document.createElement('p')
 
     img.src = way.img;
     number.innerHTML = `${way.num}`;
     name.innerHTML = `${way.name}`;
-    height.innerHTML = `${way.height}`;
-    weight.innerHTML = `${way.weight}`;
-    candy.innerHTML = `${way.candy}`
-    evolution.innerHTML = `${way.next_evolution}`
-    weakness.innerHTML = `${way.weakness}`
-    amount.innerHTML = `${way.candy_count}`
+    height.innerHTML = `<b>Peso: </b>${way.height}`;
+    weight.innerHTML = `<b>Altura: </b>${way.weight}`;
+
+    const wayNextEvolu = way.next_evolution;
+    const wayPrevEvolu = way.prev_evolution;
+
+    wayPrevEvolu ? way.prev_evolution.map((evolution) => { evolutionPrev.innerHTML = `<b>Evolução Anterior: </b>${evolution.name}` }) : null;
+    // if (wayPrevEvolu !== undefined) {
+    //     way.prev_evolution.map((evolution) => {
+    //         evolutionPrev.innerHTML = `<b>Evolução Anterior: </b>${evolution.name}`
+    //         console.log('prev =>', evolution.name)
+    //     })
+    // }
+
+    wayNextEvolu ? way.next_evolution.map((evolution) => { evolutionNext.innerHTML = `<b>Próxima Evolução: </b>${evolution.name}` }) : null;
+    // if (wayNextEvolu !== undefined) {
+    //     way.next_evolution.map((evolution) => {
+    //         evolutionNext.innerHTML = `<b>Próxima evolução: </b>${evolution.name}`
+    //         console.log('next =>', evolution.name)
+    //     })
+    // }
+
+    let getWeakness = way.weaknesses.toString()
+    weakness.innerHTML = `<b>Fraquezas: </b>${getWeakness}`
+
+    candy.innerHTML = `<b>Tipo de Candy: </b>${way.candy}`
+    way.candy_count ? amount.innerHTML = `<b>Quantidade de Candy: </b>${way.candy_count}` : null;
 
     allModal.classList.add("modal")
     modalPop.classList.add("modal-content");
     numbName.classList.add("number-name")
-    boxInfo.classList.add("box-info")
     img.classList.add("img-modal")
 
     allModal.appendChild(modalPop)
-    modalPop.appendChild(img);
-    modalPop.appendChild(numbName);
+    modalPop.appendChild(contentImg);
+    contentImg.appendChild(img);
+    modalPop.appendChild(contentInfo);
+    contentInfo.appendChild(numbName);
     numbName.appendChild(number);
     numbName.appendChild(name);
-    modalPop.appendChild(boxInfo);
+    contentInfo.appendChild(boxInfo);
     boxInfo.appendChild(height);
     boxInfo.appendChild(weight);
-    boxInfo.appendChild(candy);
-    boxInfo.appendChild(evolution);
+    boxInfo.appendChild(evolutionPrev);
+    boxInfo.appendChild(evolutionNext);
     boxInfo.appendChild(weakness);
+    boxInfo.appendChild(candy);
     boxInfo.appendChild(amount);
 
     document.getElementsByTagName('body')[0].appendChild(allModal)
     allModal.style.display = "block";
+    window.onclick = function (event) {
+        if (event.target == allModal) {
+            allModal.style.display = "none";
+        }
+    }
 }
 
 let buildCard = function (pokemon) {
@@ -97,16 +128,20 @@ let buildCard = function (pokemon) {
     card.appendChild(name);
 
     document.getElementById("root").appendChild(card);
-}
 
+}
 
 pokemonData.map(buildCard);
 
-for (const pokemon of pokemonData) {
-    document.getElementById(`id-card-${pokemon.id}`).addEventListener("click", function () {
-        buildModal(pokemon.id);
-    })
+let runModal = function (typeFunction) {
+    for (const pokemon of typeFunction) {
+        document.getElementById(`id-card-${pokemon.id}`).addEventListener("click", function () {
+            buildModal(pokemon.id);
+        })
+    }
 }
+
+runModal(pokemonData)
 
 document.getElementById("list").addEventListener("change", printFilter)
 function printFilter() {
@@ -120,6 +155,7 @@ function printFilter() {
         pokemonData.map(buildCard)
     }
     filterList.map(buildCard)
+    runModal(filterList)
 }
 
 document.getElementById("order").addEventListener("change", printOrder)
@@ -132,17 +168,18 @@ function printOrder() {
     if (pokemonOrder === "a-z") {
         const az = orderData(pokemonData, "name", "az")
         az.map(buildCard)
+        runModal(az)
     } else if (pokemonOrder === "z-a") {
         const za = orderData(pokemonData, "name", "za")
         za.map(buildCard)
+        runModal(za)
     } else if (pokemonOrder === "pokedex-number") {
         const pokedex = orderPokedex(pokemonData, "id", "pokedex")
         pokedex.map(buildCard)
+        runModal(pokedex)
     }
+
 }
-
-
-
 
 
 
