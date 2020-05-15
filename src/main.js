@@ -1,5 +1,5 @@
 import data from './data/pokemon/pokemon.js';
-import { filterData, orderData, orderPokedex } from './data.js';
+import { filterData, orderData, orderPokedex, calcType } from './data.js';
 
 const pokemonData = data.pokemon;
 
@@ -38,20 +38,7 @@ let buildModal = function (index) {
     const wayPrevEvolu = way.prev_evolution;
 
     wayPrevEvolu ? way.prev_evolution.map((evolution) => { evolutionPrev.innerHTML = `<b>Evolução Anterior: </b>${evolution.name}` }) : null;
-    // if (wayPrevEvolu !== undefined) {
-    //     way.prev_evolution.map((evolution) => {
-    //         evolutionPrev.innerHTML = `<b>Evolução Anterior: </b>${evolution.name}`
-    //         console.log('prev =>', evolution.name)
-    //     })
-    // }
-
     wayNextEvolu ? way.next_evolution.map((evolution) => { evolutionNext.innerHTML = `<b>Próxima Evolução: </b>${evolution.name}` }) : null;
-    // if (wayNextEvolu !== undefined) {
-    //     way.next_evolution.map((evolution) => {
-    //         evolutionNext.innerHTML = `<b>Próxima evolução: </b>${evolution.name}`
-    //         console.log('next =>', evolution.name)
-    //     })
-    // }
 
     let getWeakness = way.weaknesses.toString()
     weakness.innerHTML = `<b>Fraquezas: </b>${getWeakness}`
@@ -154,6 +141,26 @@ function printFilter() {
     if (pokemonType === "Todos") {
         pokemonData.map(buildCard)
     }
+
+    let filterPokemon = (filterList.length);
+    let allPokemon = (pokemonData.length)
+    let doneCalcule = calcType(filterPokemon, allPokemon)
+    let valueFix = doneCalcule.toFixed(2)
+
+    let resultCalc = document.createElement('div')
+    let calcule = document.createElement('p')
+    calcule.classList.add("result-calcule")
+    calcule.innerHTML = `Esse tipo corresponde a <b>${valueFix}% </b> dos Pokemons da Geração Kanto`
+
+    resultCalc.appendChild(calcule)
+
+    document.getElementById("root").appendChild(resultCalc)
+
+    // let result = document.querySelectorAll("div.resultCalc");
+    //     for (let i = 0; i < result.length; i++) {
+    //     document.getElementById("root").removeChild(result[i]);
+    // }
+
     filterList.map(buildCard)
     runModal(filterList)
 }

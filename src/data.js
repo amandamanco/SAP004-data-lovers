@@ -1,7 +1,5 @@
 import data from './data/pokemon/pokemon.js';
 
-let myPokemon = data.pokemon;
-
 export const filterData = typeFilter => {
     let myPokemon = data.pokemon;
     let filteredPokemons = myPokemon.filter((pokemon) => {
@@ -29,4 +27,11 @@ export const orderPokedex = (myPokemon, id, alfaOrder) => {
         })
     }
 }
+
+export const calcType = (filterPokemon, allPokemon) => {
+    let percentage = filterPokemon * 100 / allPokemon;
+    return percentage
+}
+
+
 
