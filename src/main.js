@@ -156,11 +156,6 @@ function printFilter() {
 
     document.getElementById("root").appendChild(resultCalc)
 
-    // let result = document.querySelectorAll("div.resultCalc");
-    //     for (let i = 0; i < result.length; i++) {
-    //     document.getElementById("root").removeChild(result[i]);
-    // }
-
     filterList.map(buildCard)
     runModal(filterList)
 }
