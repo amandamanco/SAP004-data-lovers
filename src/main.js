@@ -133,11 +133,12 @@ runModal(pokemonData)
 document.getElementById("list").addEventListener("change", printFilter)
 function printFilter() {
     let pokemonType = document.getElementById("list").value;
-    let filterList = filterData(pokemonType);
+    let filterList = filterData(pokemonType, pokemonData);
     let cards = document.querySelectorAll("div.card");
     for (let i = 0; i < cards.length; i++) {
         document.getElementById("root").removeChild(cards[i]);
     }
+
     if (pokemonType === "Todos") {
         pokemonData.map(buildCard)
     }
