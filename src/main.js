@@ -4,29 +4,29 @@ import { filterData, orderData, orderPokedex, calcType } from './data.js';
 const pokemonData = data.pokemon;
 
 function fixName(name) {
-    return name.replace("(Male)", "").replace("(Female)", "")
+    return name.replace("(Male)", "").replace("(Female)", "");
 }
 
 let buildModal = function (index) {
 
-    const way = data.pokemon.find(pokemon => pokemon.id == index)
+    const way = data.pokemon.find(pokemon => pokemon.id == index);
 
-    let allModal = document.createElement('div')
+    let allModal = document.createElement('div');
     let modalPop = document.createElement('div');
-    let contentImg = document.createElement('div')
+    let contentImg = document.createElement('div');
     let img = document.createElement('img');
     let contentInfo = document.createElement('div');
-    let numbName = document.createElement('div')
+    let numbName = document.createElement('div');
     let number = document.createElement('p');
     let name = document.createElement('p');
-    let boxInfo = document.createElement('div')
-    let height = document.createElement('p')
-    let weight = document.createElement('p')
-    let candy = document.createElement('p')
-    let evolutionNext = document.createElement('p')
-    let evolutionPrev = document.createElement('p')
-    let weakness = document.createElement('p')
-    let amount = document.createElement('p')
+    let boxInfo = document.createElement('div');
+    let height = document.createElement('p');
+    let weight = document.createElement('p');
+    let candy = document.createElement('p');
+    let evolutionNext = document.createElement('p');
+    let evolutionPrev = document.createElement('p');
+    let weakness = document.createElement('p');
+    let amount = document.createElement('p');
 
     img.src = way.img;
     number.innerHTML = `${way.num}`;
@@ -40,18 +40,18 @@ let buildModal = function (index) {
     wayPrevEvolu ? way.prev_evolution.map((evolution) => { evolutionPrev.innerHTML = `<b>Evolução Anterior: </b>${evolution.name}` }) : null;
     wayNextEvolu ? way.next_evolution.map((evolution) => { evolutionNext.innerHTML = `<b>Próxima Evolução: </b>${evolution.name}` }) : null;
 
-    let getWeakness = way.weaknesses.toString()
-    weakness.innerHTML = `<b>Fraquezas: </b>${getWeakness}`
+    let getWeakness = way.weaknesses.toString();
+    weakness.innerHTML = `<b>Fraquezas: </b>${getWeakness}`;
 
-    candy.innerHTML = `<b>Tipo de Candy: </b>${way.candy}`
+    candy.innerHTML = `<b>Tipo de Candy: </b>${way.candy}`;
     way.candy_count ? amount.innerHTML = `<b>Quantidade de Candy: </b>${way.candy_count}` : null;
 
-    allModal.classList.add("modal")
+    allModal.classList.add("modal");
     modalPop.classList.add("modal-content");
-    numbName.classList.add("number-name")
-    img.classList.add("img-modal")
+    numbName.classList.add("number-name");
+    img.classList.add("img-modal");
 
-    allModal.appendChild(modalPop)
+    allModal.appendChild(modalPop);
     modalPop.appendChild(contentImg);
     contentImg.appendChild(img);
     modalPop.appendChild(contentInfo);
@@ -67,7 +67,7 @@ let buildModal = function (index) {
     boxInfo.appendChild(candy);
     boxInfo.appendChild(amount);
 
-    document.getElementsByTagName('body')[0].appendChild(allModal)
+    document.getElementsByTagName('body')[0].appendChild(allModal);
     allModal.style.display = "block";
     window.onclick = function (event) {
         if (event.target == allModal) {
@@ -98,10 +98,10 @@ let buildCard = function (pokemon) {
     let nameRigth = fixName(pokemon.name);
     name.innerHTML = nameRigth;
 
-    card.id = `id-card-${pokemon.id}`
+    card.id = `id-card-${pokemon.id}`;
     card.classList.add("card");
     img.classList.add("img");
-    box.classList.add("box")
+    box.classList.add("box");
     number.classList.add("number");
     name.classList.add("name");
     allType.classList.add("all-type");
@@ -115,7 +115,6 @@ let buildCard = function (pokemon) {
     card.appendChild(name);
 
     document.getElementById("root").appendChild(card);
-
 }
 
 pokemonData.map(buildCard);
@@ -128,9 +127,9 @@ let runModal = function (typeFunction) {
     }
 }
 
-runModal(pokemonData)
+runModal(pokemonData);
 
-document.getElementById("list").addEventListener("change", printFilter)
+document.getElementById("list").addEventListener("change", printFilter);
 function printFilter() {
     let pokemonType = document.getElementById("list").value;
     let filterList = filterData(pokemonType, pokemonData);
@@ -138,30 +137,40 @@ function printFilter() {
     for (let i = 0; i < cards.length; i++) {
         document.getElementById("root").removeChild(cards[i]);
     }
-
     if (pokemonType === "Todos") {
-        pokemonData.map(buildCard)
+        pokemonData.map(buildCard);
     }
 
-    let filterPokemon = (filterList.length);
-    let allPokemon = (pokemonData.length)
-    let doneCalcule = calcType(filterPokemon, allPokemon)
-    let valueFix = doneCalcule.toFixed(2)
+    let takeResult = document.getElementsByClassName("result-calcule");
+    if (takeResult.length > 0) {
+        let takeChild = document.getElementById('resultCalc');
+        document.getElementById("root").removeChild(takeChild);
+        calculation();
+    } else {
+        calculation();
+    }
+    function calculation() {
+        let filterPokemon = (filterList.length);
+        let allPokemon = (pokemonData.length);
+        let doneCalcule = calcType(filterPokemon, allPokemon);
+        let valueFixed = doneCalcule.toFixed(2);
 
-    let resultCalc = document.createElement('div')
-    let calcule = document.createElement('p')
-    calcule.classList.add("result-calcule")
-    calcule.innerHTML = `Esse tipo corresponde a <b>${valueFix}% </b> dos Pokemons da Geração Kanto`
+        let resultCalc = document.createElement('div');
+        let calcule = document.createElement('p');
+        calcule.classList.add("result-calcule");
+        resultCalc.id = 'resultCalc';
+        calcule.innerHTML = `Esse tipo corresponde a <b>${valueFixed}% </b> dos Pokemons da Geração Kanto`;
 
-    resultCalc.appendChild(calcule)
+        resultCalc.appendChild(calcule);
 
-    document.getElementById("root").appendChild(resultCalc)
+        document.getElementById("root").appendChild(resultCalc);
+    }
 
-    filterList.map(buildCard)
-    runModal(filterList)
+    filterList.map(buildCard);
+    runModal(filterList);
 }
 
-document.getElementById("order").addEventListener("change", printOrder)
+document.getElementById("order").addEventListener("change", printOrder);
 function printOrder() {
     let pokemonOrder = document.getElementById("order").value;
     let cards = document.querySelectorAll("div.card");
@@ -169,21 +178,16 @@ function printOrder() {
         document.getElementById("root").removeChild(cards[i]);
     }
     if (pokemonOrder === "a-z") {
-        const az = orderData(pokemonData, "name", "az")
-        az.map(buildCard)
-        runModal(az)
+        const az = orderData(pokemonData, "name", "az");
+        az.map(buildCard);
+        runModal(az);
     } else if (pokemonOrder === "z-a") {
-        const za = orderData(pokemonData, "name", "za")
-        za.map(buildCard)
-        runModal(za)
+        const za = orderData(pokemonData, "name", "za");
+        za.map(buildCard);
+        runModal(za);
     } else if (pokemonOrder === "pokedex-number") {
-        const pokedex = orderPokedex(pokemonData, "id", "pokedex")
-        pokedex.map(buildCard)
-        runModal(pokedex)
+        const pokedex = orderPokedex(pokemonData, "id", "pokedex");
+        pokedex.map(buildCard);
+        runModal(pokedex);
     }
-
 }
-
-
-
-

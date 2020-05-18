@@ -1,5 +1,5 @@
-import { filterData } from '../src/data.js';
-import {Bulbasaur, Ivysaur, myPokemons} from '../test/mockPokemon.js'
+import { filterData, orderPokedex } from '../src/data.js';
+import { Bulbasaur, Ivysaur, Charmander, Charmeleon, myPokemons } from '../test/mockPokemon.js'
 
 describe('filterData', () => {
 
@@ -13,23 +13,19 @@ describe('filterData', () => {
   });
 })
 
+describe('orderPokedex', () => {
 
-// describe('orderData', () => {
+  it('should be a function', () => {
+    expect(typeof orderPokedex).toBe('function');
+  })
+  it('return order by id', () => {
+    const myPokemon = myPokemons.pokemon;
+    const id = myPokemons.pokemon.id;
+    const alfaOrder = "pokedex"
+    expect(orderPokedex(myPokemon, id, alfaOrder)).toEqual([Bulbasaur, Ivysaur, Charmander, Charmeleon]);
+  });
+})
 
-//   it('should be a function', () => {
-//     expect(typeof orderData).toBe('function');
-//   })
-//   it('return order alfabetic', () => {
-//    const myPokemon = myPokemons.pokemon;
-//    const name = myPokemon.pokemon.name;
-//    const alfabeticOrder = "az"
-//     expect(orderData(myPokemon, name, alfabeticOrder)).toEqual([Bulbasaur, Charmander, Charmeleon, Ivysaur]);
-//   });
-// })
-
-
-
-// filterPokemon, allPokemon
 
 // describe('calcType', () => {
 //   it('should be a function', () => {
@@ -38,42 +34,25 @@ describe('filterData', () => {
 //   it('return calculation of type', () => {
 //     const filterPokemon = 2;
 //     const allPokemon = myPokemons.length;
-//     expect(calcType(filterPokemon, allPokemon)).toEqual(50);
+//     expect(calcType(filterPokemon, allPokemon)).toBe(50);
 //   });
 // });
 
 
-// , orderData, orderPokedex, calcType 
-
-
-
-
-// describe('orderPokedex', () => {
+// describe('orderData', () => {
 
 //   it('should be a function', () => {
-//     expect(typeof orderPokedex).toBe('function');
+//     expect(typeof orderData).toBe('function');
 //   })
+//   it('return order alfabetic', () => {
+//    const myPokemon = myPokemons.pokemon;
+//    const name = myPokemons.pokemon.name;
+//    const alfabeticOrder = "az"
+//     expect(orderData(myPokemon, name, alfabeticOrder)).toEqual([Bulbasaur, Charmander, Charmeleon, Ivysaur]);
+//   });
 // })
 
 
-// describe('calcType', () => {
-
-//   it('should be a function', () => {
-//     expect(typeof calcType).toBe('function');
-//   })
-//    it('Retorna a media de typo', () => {
-//         expect(calcType(teansTitans, "personagens", "type", "Alien")).toBe([{type:"Alien"}]);
-//       });
-// })
 
 
-// describe('example', () => {
-//   it('is a function', () => {
-//     expect(typeof example).toBe('function');
-//   });
-
-//   it('returns `example`', () => {
-//     expect(example()).toBe('example');
-//   });
-// });
 
