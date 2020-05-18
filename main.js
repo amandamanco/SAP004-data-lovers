@@ -154,7 +154,7 @@ function printFilter() {
         let allPokemon = (pokemonData.length);
         let doneCalcule = calcType(filterPokemon, allPokemon);
         let valueFixed = doneCalcule.toFixed(2);
-
+        
         let resultCalc = document.createElement('div');
         let calcule = document.createElement('p');
         calcule.classList.add("result-calcule");
