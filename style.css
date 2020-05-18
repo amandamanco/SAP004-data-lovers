@@ -127,6 +127,10 @@ main {
   margin: 24px;
 }
 
+.result-calcule {
+  font-size: 32px;
+}
+
 .Grass {
   background-color: #10db0c;
   border-radius: 15px;
