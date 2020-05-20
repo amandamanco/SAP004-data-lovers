@@ -6,7 +6,7 @@ describe('filterData', () => {
   it('should be a function', () => {
     expect(typeof filterData).toBe('function');
   })
-  it('return filter type', () => {
+  it('return filter of type', () => {
     const typeFilter = "Poison";
     const allPokemons = myPokemons.pokemon;
     expect(filterData(typeFilter, allPokemons)).toEqual([Bulbasaur, Ivysaur])
@@ -18,17 +18,17 @@ describe('orderData', () => {
     expect(typeof orderData).toBe('function');
   })
   it('return order alfabetic A-Z ', () => {
-  const myPokemon = myPokemons.pokemon;
-   const name = myPokemons.pokemon.name;
-   const alfaOrder = "az";
-    expect(orderData(myPokemon, name, alfaOrder)).toEqual([Bulbasaur, Ivysaur, Charmander, Charmeleon])
-  })
-  it('return order alfabetic - Z-A', () => {
-  const myPokemon = myPokemons.pokemon;
-  const name = myPokemons.pokemon.name;
-  const alfaOrder = "za";
-  expect(orderData(myPokemon, name, alfaOrder)).toEqual([Bulbasaur, Ivysaur, Charmander, Charmeleon])
-})
+    const myPokemon = myPokemons.pokemon;
+    const name = myPokemons.pokemon.name;
+    const alfaOrder = "az";
+    expect(orderData(myPokemon, name, alfaOrder)).toEqual([Bulbasaur, Charmander, Charmeleon, Ivysaur]);
+  });
+  it('return order alfabetic Z-A', () => {
+    const myPokemon = myPokemons.pokemon;
+    const name = myPokemons.pokemon.name;
+    const alfaOrder = "za";
+    expect(orderData(myPokemon, name, alfaOrder)).toEqual([Ivysaur, Charmeleon, Charmander, Bulbasaur]);
+  });
 })
 
 describe('orderPokedex', () => {
