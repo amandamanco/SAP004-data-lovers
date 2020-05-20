@@ -53,7 +53,7 @@ Pensando nas necessidades do usuário e no layout da listagem de 151 pokémons, 
 |:--:|
 | *Rascunho - Amanda* |
 
-| ![Rascunho - Marcella](/src/assets/RascunhoMarcella.jpeg) |
+| ![Rascunho - Marcella](/src/assets/RascunhoMarcella.jpg) |
 |:--:|
 | *Rascunho - Marcella* |
 
@@ -61,13 +61,13 @@ Pensando nas necessidades do usuário e no layout da listagem de 151 pokémons, 
 |:--:|
 | *Rascunho para Teste de Usabilidade* |
 
-Como já foi falado anteriormente, no início do projeto foram idealizadas duas páginas: a página inicial e a página com as características de cada pokémon. Abaixo podem ser observados o protótipo de baixa fidelidade seguido pelo protótipo de alta fidelidade, ainda com a segunda página `html`: (
+Como já foi falado anteriormente, no início do projeto foram idealizadas duas páginas: a página inicial e a página com as características de cada pokémon. Abaixo podem ser observados o protótipo de baixa fidelidade seguido pelo protótipo de alta fidelidade, ainda com a segunda página `html`: 
 
 | ![Protótipo de Baixa Fidelidade - HOMEPAGE](/src/assets/BaixaFidelidade01.jpg) |
 |:--:|
 | *Protótipo de Baixa Fidelidade - HOMEPAGE* |
 
-| ![Protótipo de Baixa Fidelidade - Características](/src/assets/BaixaFidelidade02.jpg) |
+| ![Protótipo de Baixa Fidelidade - Características](/src/assets/BaixaFidelidade02.jpeg) |
 |:--:|
 | *Protótipo de Baixa Fidelidade - Características* |
 
